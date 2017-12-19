@@ -1,6 +1,6 @@
 # transfer_vue
 
-> A Vue.js project
+> A Vue.js project, it's a websocket client demo for upload file, the webscoket server demo [here](https://github.com/pythonsoft/im)
 
 ## Build Setup
 
