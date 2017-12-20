@@ -96,6 +96,8 @@ class FileClient {
     });
   }
   destroy() {
+    this.socket.disconnect();
+    this.socket = null;
     this.transferTaskInstance = null;
   }
   stopTask() {
