@@ -12,6 +12,7 @@
     <label for="img-input" class="upload-img-content-change">选择文件</label>
     <button @click="stop" :disabled="!canStop">暂停</button>
     <button @click="start" :disabled="!canStart">开始</button>
+    <button @click="remove" :disabled="!canDelete">删除</button>
   </div>
 </template>
 <script>
@@ -24,6 +25,7 @@
         path: '',
         canStop: false,
         canStart: false,
+        canDelete: false,
         task: null
       };
     },
@@ -44,13 +46,13 @@
           });
           task.transfer();
           tasks.push(task);
-          this.task = task;
+          this.task = task;     //目前只有一个task
           this.canStop = true;
+          this.canDelete = true;
           this.canStart = false;
         }
       },
       stop() {
-        console.log(typeof this.task.stopTask);
         this.task.stopTask();
         this.canStop = false;
         this.canStart = true;
@@ -59,6 +61,12 @@
         this.task.restart();
         this.canStop = true;
         this.canStart = false;
+      },
+      remove() {
+        this.task.destroy();
+        this.canStop = false;
+        this.canStart = false;
+        this.canDelete = false;
       }
     }
   };

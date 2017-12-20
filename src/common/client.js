@@ -54,6 +54,7 @@ class FileClient {
         lastModifiedTime: file.lastModifiedDate.toLocaleDateString()
       });
       task.socketId = socket.id;
+      console.log("headerPackage===>",)
       socket.emit('headerPackage', task.headerPackage, config.umpAssistQueueName);
       me.transferTaskInstance = task;
       utils.console('socket connect, socket id blow ', me.getSocketId());
