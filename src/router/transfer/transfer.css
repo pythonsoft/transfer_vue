@@ -1,0 +1,21 @@
+.upload-img-input {
+  visibility: hidden;
+}
+
+.upload-img-content-change {
+  font-size: 12px;
+  color: #1497D6;
+  position: absolute;
+  left: 45%;
+  z-index: 1;
+}
+
+.imgStyle {
+  background: url(../../assets/logo.png) no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+.file-table {
+  margin-top: 12px;
+}

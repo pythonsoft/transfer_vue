@@ -7,8 +7,6 @@ config.secret = {
   yunXiang: 'BRYSJHHRHLYQQLMG',
   ump: 'secret',
 };
-config.host = '10.0.15.152';
-config.port = '9000';
-config.umpAssistQueueName = 'ump-assist-queue';
+config.socketDomain = 'localhost:4000';
 
 module.exports = config;

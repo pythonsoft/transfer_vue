@@ -1,6 +1,6 @@
 # transfer_vue
 
-> A Vue.js project, it's a websocket client demo for upload file
+> A Vue.js project, it's a websocket client demo for upload file and chat room
 
 ## Build Setup
 

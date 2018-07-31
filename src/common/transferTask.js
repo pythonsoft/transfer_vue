@@ -1,5 +1,5 @@
 /**
- * Created by chaoningxie on 2016/12/10.
+ * Created by steven on 2018/07/24.
  */
 const uuid = require('uuid');
 const util = require('util');
@@ -9,7 +9,10 @@ class TransferTask {
     this.settings = Object.assign({
       size: '',
       name: '',
-      lastModifiedTime: ''
+      lastModifiedTime: '',
+      userId: '',
+      userName: '',
+      _id: ''
     }, settings);
 
     this.status = {
@@ -33,7 +36,7 @@ class TransferTask {
         index: i,
         retryTime: 0,
         info: {},
-        log: [],
+        log: []
       };
     }
 
@@ -41,18 +44,19 @@ class TransferTask {
   }
 
   _generateHeaderPackage() {
-
     const size = this.settings.size;
     const headerPackageInfo = {
-      _id: uuid.v1(),
+      _id: this.settings._id,
       name: this.settings.name,
+      userId: this.settings.userId,
+      userName: this.settings.userName,
       total: size,
       size: size,
       lastModifiedTime: this.settings.lastModifiedTime,
       createdTime: '',
-      eachPackageSize: 1024 * 1024 * 5,
+      eachPackageSize: 1024 * 100,
       packageCount: 0,
-      order: [], // child task uuid list
+      order: [] // child task uuid list
     };
     headerPackageInfo.packageCount = ((size / headerPackageInfo.eachPackageSize) | 0) + (size % headerPackageInfo.eachPackageSize === 0 ? 0 : 1);
     for (let i = 0, len = headerPackageInfo.packageCount; i < len; i++) {
@@ -105,8 +109,8 @@ class TransferTask {
     const headerPackage = this.headerPackage;
     const eachPackageSize = headerPackage.eachPackageSize;
     const readStartPosition = eachPackageSize * index;
-    let readEndPosition = readStartPosition + eachPackageSize - 1;
-    const maxEndPosition = headerPackage.size - 1;
+    let readEndPosition = readStartPosition + eachPackageSize;
+    const maxEndPosition = headerPackage.size;
     let size = headerPackage.eachPackageSize;
 
     if (readEndPosition > maxEndPosition) {
@@ -129,7 +133,7 @@ class TransferTask {
     };
 
     if (st.status === this.status.ready) {
-      this._setStartStatus(packageInfo);
+      // this._setStartStatus(packageInfo);
     } else if (st.status === this.status.error) {
       this._updateErrorStatusToStart(packageInfo);
     } else {
