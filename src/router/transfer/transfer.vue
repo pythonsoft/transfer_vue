@@ -1,10 +1,10 @@
 <template>
-  <div style="position: relative;">
+  <div style="position: relative;padding-top: 100px;font-size: 20px;">
     <div style="height: 50px;">
       <input id="img-input" accept="*" class="upload-img-input" @change='chooseImg' type="file">
       <label for="img-input" class="upload-img-content-change">选择文件</label>
     </div>
-    <div :class="file-table">
+    <div class="file-table">
       <el-table :data="rows" style="width: 100%;" align="center">
         <el-table-column prop="name" label="文件名" width="200">
           <template slot-scope="props">

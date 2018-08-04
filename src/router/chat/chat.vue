@@ -10,7 +10,7 @@
               </template>
               <template v-else-if="item.type === 'message'">
                 <span class="username" :style="getUsernameColor(item.username)">{{item.username}}:</span>
-                <span class="messageBody">{{item.message}}</span>
+                <span class="messageBody" style="color: black;">{{item.message}}</span>
               </template>
               <template v-else-if="item.type === 'typing'">
                 <span class="username" :style="getUsernameColor(item.username)">{{item.username}}</span>

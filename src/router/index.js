@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import App from '../App';
 import Home from './home/home';
 import Transfer from './transfer/transfer';
 import Chat from './chat/chat';
@@ -8,17 +7,12 @@ import Chat from './chat/chat';
 Vue.use(Router);
 
 export default new Router({
-  routes: [
+  routes:[
     {
       path: '/',
-      name: 'app',
-      component: App,
+      name: 'home',
+      component: Home,
       children: [
-        {
-          path: '/',
-          name: 'home',
-          component: Home,
-        },
         {
           path: 'transfer',
           name: 'transfer',
